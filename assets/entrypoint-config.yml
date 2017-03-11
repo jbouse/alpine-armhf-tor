@@ -1,7 +1,7 @@
 command: tor
 
 user: tor
-group: nogroup
+group: tor
 
 secret_env:
     - '*_KEY'

@@ -19,7 +19,8 @@ RUN	apk add --no-cache tor openssl python3 \
         && apk del .build-deps \ 
 	&& pip install pyentrypoint==0.5.0 \
 	&& cd /usr/local/src/onions \
-	&& python3 setup.py install
+	&& python3 setup.py install \
+	&& addgroup -S -g 104 tor \
 RUN	["docker-build-end"]
 
 VOLUME  ["/var/lib/tor/hidden_service/"]
