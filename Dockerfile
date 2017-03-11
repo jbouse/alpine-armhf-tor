@@ -8,8 +8,7 @@ ADD     assets/entrypoint-config.yml /
 ADD     assets/onions /usr/local/src/onions
 ADD     assets/torrc /var/local/tor/torrc.tpl
 
-# RUN	["docker-build-start"]
-
+RUN	["docker-build-start"]
 RUN	apk add --no-cache tor openssl python3 \
 	&& apk add --no-cache --virtual .build-deps \
 		git libevent-dev openssl-dev gcc make \
@@ -21,8 +20,7 @@ RUN	apk add --no-cache tor openssl python3 \
 	&& pip install pyentrypoint==0.5.0 \
 	&& cd /usr/local/src/onions \
 	&& python3 setup.py install
-
-# RUN	["docker-build-end"]
+RUN	["docker-build-end"]
 
 VOLUME  ["/var/lib/tor/hidden_service/"]
 
